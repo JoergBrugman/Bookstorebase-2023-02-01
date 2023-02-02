@@ -1,0 +1,4 @@
+*.app
+rad.json
+.alcache
+.altemplates
