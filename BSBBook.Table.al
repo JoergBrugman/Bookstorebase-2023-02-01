@@ -6,6 +6,7 @@ table 50100 "BSB Book"
     Caption = 'Book';
     DataClassification = ToBeClassified;
     DataCaptionFields = "No.", Description;
+    LookupPageId = "BSB Book List";
 
     fields
     {
@@ -85,7 +86,11 @@ table 50100 "BSB Book"
             Clustered = true;
         }
     }
-    //TODO Ein Buch darf nicht gelöscht werden
+
+    fieldgroups
+    {
+        fieldgroup(DropDown; "No.", Description, Author, "No. of Pages") { }
+    }
 
     trigger OnInsert()
     begin
@@ -107,6 +112,39 @@ table 50100 "BSB Book"
     begin
         Error(OnDeleteBookErr);
     end;
+
+    /// <summary>
+    /// TestBlocked testet das Feld Blocked in Kontext des Rec
+    /// </summary>
+    procedure TestBlocked()
+    begin
+        TestBlocked(Rec);
+    end;
+
+    /// <summary>
+    /// TestBlocked für übergegebene Code
+    /// </summary>
+    /// <param name="No">Code[20].</param>
+    procedure TestBlocked(No: Code[20])
+    var
+        BSBBook: Record "BSB Book";
+    begin
+        if (No = '') or (not BSBBook.Get(No)) then
+            exit;
+
+        TestBlocked(BSBBook);
+    end;
+
+    /// <summary>
+    /// TestBlocked im Kontext der übergebenen Rec-Varialblen
+    /// </summary>
+    /// <param name="BSBBook">Record "BSB Book".</param>
+    procedure TestBlocked(BSBBook: Record "BSB Book")
+    begin
+        BSBBook.TestField(Blocked, false);
+    end;
+
+
 
     var
         OnDeleteBookErr: Label 'A Book cannot be deleted';

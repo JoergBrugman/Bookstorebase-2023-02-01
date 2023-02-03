@@ -19,11 +19,13 @@ page 50100 "BSB Book Card"
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    Importance = Promoted;
                     ToolTip = 'Specifies the value of the Description field.';
                 }
                 field("Search Description"; Rec."Search Description")
                 {
                     ApplicationArea = All;
+                    Importance = Additional;
                     ToolTip = 'Specifies the value of the Search Description field.';
                 }
                 field(Blocked; Rec.Blocked)
@@ -49,11 +51,13 @@ page 50100 "BSB Book Card"
                 field(Created; Rec.Created)
                 {
                     ApplicationArea = All;
+                    Importance = Additional;
                     ToolTip = 'Specifies the value of the Created field.';
                 }
                 field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = All;
+                    Importance = Additional;
                     ToolTip = 'Specifies the value of the Last Date Modified field.';
                 }
             }
