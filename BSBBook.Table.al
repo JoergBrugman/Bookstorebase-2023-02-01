@@ -100,7 +100,6 @@ table 50100 "BSB Book"
     trigger OnModify()
     begin
         "Last Date Modified" := Today();
-        Message('Hier');
     end;
 
     trigger OnRename()

@@ -49,4 +49,26 @@ page 50101 "BSB Book List"
             systempart(Notes; Notes) { ApplicationArea = All; }
         }
     }
+    actions
+    {
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                actionref(CreateDemoBook_Promoted; CreateDemoBooks) { }
+            }
+        }
+        area(Processing)
+        {
+            action(CreateDemoBooks)
+            {
+                ApplicationArea = All;
+                Caption = 'Create Demo Books';
+                Image = CreateDocuments;
+
+                ToolTip = 'Executes the Create Demo Books action.';
+                RunObject = codeunit "BSB Create Books";
+            }
+        }
+    }
 }
