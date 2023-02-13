@@ -6,7 +6,6 @@ tableextension 50100 "BSB Customer" extends Customer
         {
             Caption = 'Favorite Book No.';
             TableRelation = "BSB Book";
-            //TODO Es sollen keine gesperrten Bücher ausgewählt werden können
 
             trigger OnValidate()
             var

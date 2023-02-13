@@ -135,7 +135,7 @@ table 50100 "BSB Book"
     end;
 
     /// <summary>
-    /// TestBlocked im Kontext der übergebenen Rec-Varialblen
+    /// TestBlocked im Kontext der übergebenen Rec-Variablen
     /// </summary>
     /// <param name="BSBBook">Record "BSB Book".</param>
     procedure TestBlocked(BSBBook: Record "BSB Book")
