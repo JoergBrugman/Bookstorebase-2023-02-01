@@ -69,6 +69,25 @@ page 50101 "BSB Book List"
                 ToolTip = 'Executes the Create Demo Books action.';
                 RunObject = codeunit "BSB Create Books";
             }
+
+            action(BookSalesProcess)
+            {
+                Caption = 'Book Sales Process';
+                ApplicationArea = All;
+                Image = Process;
+                ToolTip = 'Executes the Book Sales Process action.';
+
+                trigger OnAction()
+                var
+                    BSBBookTypeProcess: interface "BSB Book Type Process";
+                    BSBBookTypeProcessMgmt: Codeunit "BSB Book Type Process Mgmt.";
+                begin
+                    // BSBBookTypeProcessMgmt.GetHandler(Rec, BSBBookTypeProcess);
+                    BSBBookTypeProcess := BSBBookTypeProcessMgmt.GetHandler(Rec);
+                    BSBBookTypeProcess.StartDeployBook();
+                    BSBBookTypeProcess.StartDeliverBook();
+                end;
+            }
         }
     }
 }

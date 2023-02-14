@@ -21,7 +21,7 @@ codeunit 50149 "BSB Create Books"
         BSBBook.Author := 'Autor ' + Suffix;
         BSBBook.ISBN := CopyStr(Suffix, 1, MaxStrLen(BSBBook.ISBN));
         BSBBook."No. of Pages" := Int * 10;
-        BSBBook.Type := int mod 3;
+        BSBBook.Type := "BSB Book Type".FromInteger(int mod 3);
         BSBBook."Date of Publishing" := Today() + Int;
         if not BSBBook.insert(true) then BSBBook.Modify(true);
     end;
